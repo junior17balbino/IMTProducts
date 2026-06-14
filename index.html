@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMT PRODUCTS</title>
+    <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10%;
+            background-color: rgba();
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+            background-image: url("img/navbar.png"); max-width: 100%;
+            background-position: 0px -150px;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba();
+            padding: 0.8rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Common Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Process Section */
+        .process {
+            background-color: #f9f9f9;
+        }
+
+        .process-container {
+            position: relative;
+            max-width: 900px;
+            height: 650px;
+            margin: 0 auto;
+        }
+
+        .process-item {
+            position: absolute;
+            width: 200px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .process-item:hover {
+            transform: scale(1.1);
+        }
+
+        .process-item img {
+            width: 70%;
+            height: 150px;
+            object-fit: scale-down;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            border: 3px solid var(--white);
+        }
+
+        .process-item p {
+            margin-top: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .process-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--secondary-color);
+            color: white;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--shadow);
+            z-index: 10;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .process-center h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--white);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 200px;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.10);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: var(--white);
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact .section-title::after {
+            background-color: var(--accent-color);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .contact-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .message {
+            text-align: center;
+            font-size: 1.3rem;
+            max-width: 1000px;
+            margin-top: 1rem;
+            line-height: 1.8;
+            padding: 3rem;
+            
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a252f;
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .process-container {
+                height: 500px;
+            }
+            
+            .process-item {
+                width: 130px;
+            }
+            
+            .process-item img {
+                height: 130px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: rgba(255, 255, 255, 0.98);
+                text-align: center;
+                padding: 2rem 0;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            section {
+                padding: 3rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .process-container {
+                height: 400px;
+            }
+            
+            .process-item {
+                width: 110px;
+            }
+            
+            .process-item img {
+                height: 110px;
+            }
+            
+            .process-center {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .process-center h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 150px;
+            }
+            
+            .process-container {
+                height: 350px;
+            }
+            
+            .process-item {
+                width: 90px;
+            }
+            
+            .process-item img {
+                height: 90px;
+            }
+            
+            .process-center {
+                width: 120px;
+                height: 120px;
+                font-size: 0.9rem;
+            }
+            
+            .process-center h3 {
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/Logo.png" alt="Logo de la Empresa">
+            <h1>IMT PRODUCTS</h1>
+        </div>
+        
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#proceso">Proceso</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <img src="img/inicio1.png" alt="">
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="nosotros">
+        <h2 class="section-title">¿Quienes Somos?</h2>
+        <div class="about-content">
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-bullseye"></i>
+                    <h2 style="font-size:medium;">Los Mejores en Materiales de Empaques y Embalajes.</h2>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-bullseye"></i>
+                    <h2 style="font-size:medium;">Fabricante de bolsa de polietileno de baja densidad.</h2>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-eye"></i>
+                    <h2 style="font-size:medium;">Ofrecemos solución a la medida.</h2>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-handshake"></i>
+                    <h2 style="font-size:medium;">Tenemos lo que necesitas.</h2>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-handshake"></i>
+                    <h2 style="font-size:medium;">Distinguidos por la calidad en producto y servicio.</h2>
+                </div>
+
+                <div class="feature">
+                    <i class="fas fa-handshake"></i>
+                    <h2 style="font-size:medium;">Siempre en constante mejora para brindarte lo que requieres.</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="proceso">
+        <h2 class="section-title">Proceso de Fabricación de Bolsa</h2>
+        <div class="process-container">
+            <div class="process-center">
+                <h3 center>Proceso de Fabricación</h3>
+            </div>
+            
+            <!-- Process items arranged in a circle -->
+            <div class="process-item" style="top: 2%; left: 50%; transform: translateX(-50%);">
+                <img src="img/proceso1.jpg" alt="Empaque">
+                <p>Empaque</p>
+            </div>
+            
+            <div class="process-item" style="top: 10%; right: 20%;">
+                <img src="img/proceso2.jpg" alt="Materiales">
+                <p>Materiales</p>
+            </div>
+            
+            <div class="process-item" style="top: 40%; right: 4%;">
+                <img src="img/proceso3.jpg" alt="Fabricación">
+                <p>Fabricación</p>
+            </div>
+            
+            <div class="process-item" style="bottom:3%; right: 20%;">
+                <img src="img/proceso4.jpg" alt="Control de Calidad">
+                <p>Control de Calidad</p>
+            </div>
+            
+            <div class="process-item" style="bottom: -2%; left: 50%; transform: translateX(-50%);">
+                <img src="img/proceso5.jpg" alt="Empaque">
+                <p>Empaque</p>
+            </div>
+            
+            <div class="process-item" style="bottom: 3%; left: 20%;">
+                <img src="img/proceso6.jpg" alt="Distribución">
+                <p>Distribución</p>
+            </div>
+            
+            <div class="process-item" style="top: 40%; left: 4%;">
+                <img src="img/proceso7.jpg" alt="Servicio Post-Venta">
+                <p>Servicio Post-Venta</p>
+            </div>
+            
+            <div class="process-item" style="top: 1%; left: 1%; width: 300px; height: 40px;">
+                <p style="text-align: justify; font-size: 18px;">Fabricamos Bolsa de Polietileno de baja densidad: Natural, VCI, ESD (antiestática). Podemos fabricar en la medida que nuestros clientes la requieran así como en el color requerido.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="nosotros">
+                <h2 class="section-title">BOLSA VCI</h2>
+                <div class="process-container">
+                    <p style="text-align: justify;">La fabricación de bolsas VCI (Inhibidor Volátil de Corrosión) implica <strong>impregnar película de polietileno con químicos VCI</strong> que liberan vapores protectores, creando una <strong> delgada capa molecular</strong> sobre metales para prevenir la corrosión durante el almacenamiento y enví<br>
+                    <br>El proceso se basa en la <strong>extrusión de polietileno</strong> mezclado con el aditivo VCI, seguido de la conversión de la película en bolsas o liners que ofrecen protección contra humedad y oxígeno sin necesidad de recubrimientos adicionales. <br>
+                    <br><strong>¿Cómo Funcionan?</strong><br></p>
+                    <ol style="text-align: justify;">
+                        <strong><li>Impregnación</strong>: La resina de polietileno se mezcla con los químicos VCI durante el proceso de extrusión.</li>
+
+                        <strong><li>Volatilización</strong>: Al empaquetar una pieza metálica, los químicos VCI se evaporan y saturan el espacio dentro de la bolsa.</li>
+
+                        <strong><li>Formación de Barrera</strong>: Las moléculas VCI se adhieren a las superficies metálicas, creando una capa protectora invisible que detiene la oxidación.</li>
+                    </ol><br>
+                    <ul>
+                        <strong>Características Clave:</strong>
+                        <li><strong>Protección Integral</strong>: Protegen rincones y cavidades difíciles de alcanzar.</li>
+                        <strong><li>No Agresivas</strong>: Son seguras para componentes electrónicos y no afectan las piezas.</li>
+                        <strong><li>Variedad</strong>: Disponibles en bolsas, rollos, fundas, con opciones ESD (antiestáticas) y recicladas.</li>
+                    </ul>
+                </div>
+
+    
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="galeria">
+        <h2 class="section-title">Bolsas y Rollos de Polietileno y algunos de sus usos</h2>
+        <div class="gallery-container" id="galleryContainer">
+            <!-- Gallery images will be added by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <h2 class="section-title">Contáctanos</h2>
+        
+        <div>
+            <p style="text-align: center; font-size: large; margin-bottom: 5%;">Gracias por visitar nuestra página web. Estamos comprometidos a brindar soluciones innovadoras y de calidad para sus necesidades industriales. No dude en contactarnos para cualquier consulta o proyecto.</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-building"></i>
+                    <h3>Contacto de ventas:</h3>
+                    <p>Isaias Morales</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>E-mail:</h3>
+                    <p>imtproducts92@gmail.com</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Teléfono</h3>
+                    <p>+52 466-669-7881</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>RFC:</h3>
+                    <p>MOTI921128B81</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 IMT PRODUCTS. Todos los derechos reservados.</p>
+        <p style="margin-top: 1rem;">Síguenos en 
+            <a href="#" style="color: #3498db; margin: 0 5px;">Facebook</a> | 
+            <a href="#" style="color: #3498db; margin: 0 5px;">Instagram</a> | 
+            <a href="#" style="color: #3498db; margin: 0 5px;">LinkedIn</a>
+        </p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Gallery images
+        const galleryContainer = document.getElementById('galleryContainer');
+        const imageUrls = [
+            'img/usos1.jpg',
+            'img/usos2.jpg',
+            'img/usos3.jpg',
+            'img/usos4.jpg',
+            'img/usos5.jpg',
+            'img/usos6-6.jpg',
+            'img/usos7.jpg',
+            'img/usos8.jpg',
+            'img/usos9.jpg',
+            'img/usos10.jpg',
+            'img/usos11-1.jpg',
+            'img/usos12.jpg',
+            'img/usos13.jpg',
+            'img/usos14.jpg'
+        ];
+
+        // Create gallery items
+        imageUrls.forEach(url => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.innerHTML = `<img src="${url}" alt="Proyecto de la empresa">`;
+            galleryContainer.appendChild(galleryItem);
+        });
+
+        // Process items hover effect
+        const processItems = document.querySelectorAll('.process-item');
+        processItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.zIndex = '20';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.zIndex = '';
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
