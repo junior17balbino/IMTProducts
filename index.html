@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMT PRODUCTS</title>
     <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -718,6 +722,22 @@
             }
         }
 
+        /* Botón contacto */
+        .btn-whatsapp-custom {
+            background-color: #25D366;
+            color: white;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+            transition: 0.2s;
+            border: none;
+        }
+        .btn-whatsapp-custom:hover {
+            background-color: #128C7E;
+            transform: scale(1.02);
+            color: white;
+        }
+        
     </style>
 </head>
 <body>
@@ -945,14 +965,49 @@
                     <img src="img/otrosma3.jpg" alt=""><img src="img/otrosma4.jpg" alt=""><img src="img/otrosma5.jpg" alt=""><br>
                     <br>
                     <br>
-                    <p style="text-align: justify;">El fleje es un elementomuy común e indispensable, para la sujeción de carga y empaque de productos para su traslado, manejamos varios tipos para satisfacer sus necesidades y proporcionar la solución óptima.</p>
+                    <p style="text-align: justify;">El fleje es un elemento muy común e indispensable, para la sujeción de carga y empaque de productos para su traslado, manejamos varios tipos para satisfacer sus necesidades y proporcionar la solución óptima.</p>
                     <img src="img/otrosma7.jpg" alt=""><img src="img/otrosma8.jpg" alt=""><img src="img/otrosma9.jpg" alt=""><img src="img/otrosma10.jpg" alt=""><img src="img/otrosma11.jpg" alt=""><br>
                 </div>
     </section>
 
+     <!-- CONTACTO con WhatsApp -->
+<section id="contacto" class="py-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <span class="section-sub">COMUNICATE CON NOSOTROS</span>
+                <!--<h2 class="section-title">Contanos tu proyecto</h2>-->
+                <p class="lead mb-4">Escribenos por WhatsApp para coordinar una reunión.</p>
+                <div class="card shadow-sm border-0 rounded-4 p-4 p-md-5 bg-light">
+                    <form id="contactForm" action="#" method="post">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control form-control-lg" placeholder="Nombre completo" required id="nombre">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control form-control-lg" placeholder="Email" required id="email">
+                            </div>
+                            <div class="col-12">
+                                <input type="tel" class="form-control form-control-lg" placeholder="Teléfono (opcional)" id="telefono">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="4" placeholder="Cuentanos más sobre tu proyecto o presupuesto estimado..." id="mensaje"></textarea>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <button type="button" class="btn btn-whatsapp-custom" id="whatsappBtn"><i class="bi bi-whatsapp me-2"></i>Consultar por WhatsApp</button>
+                                <p class="small text-muted mt-3">Al enviar, se abrirá WhatsApp con tu consulta precompletada.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Contact Section -->
     <section class="contact" id="contacto">
-        <h2 class="section-title">Contáctanos</h2>
+        <h2 class="section-title">Otros medios de contacto</h2>
         
         <div>
             <p style="text-align: center; font-size: large; margin-bottom: 5%;">Gracias por visitar nuestra página web. Estamos comprometidos a brindar soluciones innovadoras y de calidad para sus necesidades industriales. No dude en contactarnos para cualquier consulta o proyecto.</p>
@@ -1083,6 +1138,27 @@
                 }
             });
         });
+
+         // Número de WhatsApp (se puede reemplazar por el número real de la empresa, por ahora dejamos un número demo de Argentina)
+        // En la página original no figura número público, pero por practicidad usamos un número de referencia: +5491123456789 (cámbialo cuando tengas el real)
+        let numeroWhatsApp = "524616067919";  // Número demo, reemplazar por el real.
+        let url = `https://wa.me/${numeroWhatsApp}?text=${textoWhats}`;
+        window.open(url, '_blank');
+    });
+
+    // Smooth scroll para los enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === "#" || href === "") return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+        
     </script>
 </body>
 </html>
