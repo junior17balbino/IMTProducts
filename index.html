@@ -26,7 +26,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Times New Roman", Times, serif;
         }
 
         html {
@@ -971,39 +971,39 @@
     </section>
 
      <!-- CONTACTO con WhatsApp -->
-<section id="contacto" class="py-5">
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-                <span class="section-sub">COMUNICATE CON NOSOTROS</span>
-                <!--<h2 class="section-title">Contanos tu proyecto</h2>-->
-                <p class="lead mb-4">Escribenos por WhatsApp para coordinar una reunión.</p>
-                <div class="card shadow-sm border-0 rounded-4 p-4 p-md-5 bg-light">
-                    <form id="contactForm" action="#" method="post">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control form-control-lg" placeholder="Nombre completo" required id="nombre">
+    <section id="contacto" class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <span class="section-sub">COMUNICATE CON NOSOTROS</span>
+                    <!--<h2 class="section-title">Contanos tu proyecto</h2>-->
+                    <p class="lead mb-4">Escribenos por WhatsApp para coordinar una reunión.</p>
+                    <div class="card shadow-sm border-0 rounded-4 p-4 p-md-5 bg-light">
+                        <form id="contactForm" action="#" method="post">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Nombre completo" required id="nombre">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control form-control-lg" placeholder="Email" required id="email">
+                                </div>
+                                <div class="col-12">
+                                    <input type="tel" class="form-control form-control-lg" placeholder="Teléfono (opcional)" id="telefono">
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control" rows="4" placeholder="Cuentanos más sobre tu proyecto o presupuesto estimado..." id="mensaje"></textarea>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <button type="button" class="btn btn-whatsapp-custom" id="whatsappBtn"><i class="bi bi-whatsapp me-2"></i>Consultar por WhatsApp</button>
+                                    <p class="small text-muted mt-3">Al enviar, se abrirá WhatsApp con tu consulta precompletada.</p>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control form-control-lg" placeholder="Email" required id="email">
-                            </div>
-                            <div class="col-12">
-                                <input type="tel" class="form-control form-control-lg" placeholder="Teléfono (opcional)" id="telefono">
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control" rows="4" placeholder="Cuentanos más sobre tu proyecto o presupuesto estimado..." id="mensaje"></textarea>
-                            </div>
-                            <div class="col-12 mt-3">
-                                <button type="button" class="btn btn-whatsapp-custom" id="whatsappBtn"><i class="bi bi-whatsapp me-2"></i>Consultar por WhatsApp</button>
-                                <p class="small text-muted mt-3">Al enviar, se abrirá WhatsApp con tu consulta precompletada.</p>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contacto">
@@ -1139,9 +1139,36 @@
             });
         });
 
-         // Número de WhatsApp (se puede reemplazar por el número real de la empresa, por ahora dejamos un número demo de Argentina)
+        // Función para generar mensaje automático y abrir WhatsApp (con datos del formulario)
+        document.getElementById('whatsappBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Obtener valores
+        let nombre = document.getElementById('nombre').value.trim();
+        let email = document.getElementById('email').value.trim();
+        let telefono = document.getElementById('telefono').value.trim();
+        let mensaje = document.getElementById('mensaje').value.trim();
+        
+        // Texto base
+        let textoWhats = "Hola IMT Products, me gustaría recibir información sobre un proyecto.%0A";
+        if (nombre !== "") {
+            textoWhats += `%0A*Nombre:* ${encodeURIComponent(nombre)}%0A`;
+        }
+        if (email !== "") {
+            textoWhats += `*Email:* ${encodeURIComponent(email)}%0A`;
+        }
+        if (telefono !== "") {
+            textoWhats += `*Teléfono:* ${encodeURIComponent(telefono)}%0A`;
+        }
+        if (mensaje !== "") {
+            textoWhats += `%0A*Consulta:* ${encodeURIComponent(mensaje)}%0A`;
+        } else {
+            textoWhats += `%0A*Consulta:* Me gustaría recibir una cotización.`;
+        }
+        
+        // Número de WhatsApp (se puede reemplazar por el número real de la empresa, por ahora dejamos un número demo de Argentina)
         // En la página original no figura número público, pero por practicidad usamos un número de referencia: +5491123456789 (cámbialo cuando tengas el real)
-        let numeroWhatsApp = "524616067919";  // Número demo, reemplazar por el real.
+        let numeroWhatsApp = "524666697881";  // Número demo, reemplazar por el real.
         let url = `https://wa.me/${numeroWhatsApp}?text=${textoWhats}`;
         window.open(url, '_blank');
     });
